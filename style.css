@@ -221,12 +221,21 @@ body {
     width: 45vw;
     height: calc(100vh - 1rem);
     overflow: hidden;
+    position: relative;
 }
 
 .gallery__container .right__container .image__wrapper {
     aspect-ratio: 0.7 / 1;
     height: 40vh;
     overflow: hidden;
+    position: relative;
+}
+
+.gallery__container .left__container .image__wrapper img,
+.gallery__container .right__container .image__wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .gallery__container .left__container .image__wrapper img,
@@ -234,6 +243,24 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@keyframes slide-left {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    }
+}
+
+@keyframes scale-up {
+    0% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .gallery__container .left__container .image__description {
