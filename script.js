@@ -6,69 +6,8 @@ let rightImage = document.querySelector(".right__image");
 
 let i = 1;
 
-nextBtn.addEventListener("click", (e) => {
-
-    if(i < 16) {
-        // leftImage.src = `assets/images/1%20(${i}).webp`
-
-        gsap.timeline({ defaults: { ease: "power2.inOut" }})
-        .to(leftImage, { duration: 0.4, scale: 1.5})
-        
-        .set(leftImage, {
-        attr: { src: `assets/images/1%20(${i}).webp` }}, 0.1)
-
-        .to(leftImage, { duration: 0.4, scale: 1}, 0.1);
 
 
-
-        rightImage.src = `assets/images/1%20(${i}).webp`
-        
-        i++;
-        console.log(i)
-    }
-    else {
-        leftImage.src = `assets/images/1%20(2).webp`;
-        rightImage.src = `assets/images/1%20(6).webp`;
-        i = 1;
-        console.log(i)
-    }
-})
-
-prevBtn.addEventListener("click", () => {
-    if (i > 1) {
-        i--;
-    } else {
-        i = 15; // Reset to the last image index if at the first image
-    }
-    leftImage.src = `assets/images/1%20(${i}).webp`;
-    rightImage.src = `assets/images/1%20(${i}).webp`;
-    // console.log(leftImage.src);
-    console.log(i)
-});
-
-
-// gsap.timeline()
-//         .to(leftImage, { 
-//             duration: 0.4,
-//             // autoAlpha: 0.33,
-//             // filter: 'brightness(0%) blur(20px)'
-//             scale: 1.5,
-//             ease: "power2.Out"
-//         })
-
-//         .set(leftImage, {
-//         attr: {
-//             src: `assets/images/1%20(${i}).webp`
-//         }
-//         }, 0.1)
-
-//         .to(leftImage, {
-//             duration: 0.4,
-//             scale: 1,
-//             ease: "power2.Out"
-//             // autoAlpha: 1,
-//             // filter: 'brightness(100%) blur(0px)'
-//         }, 0.1)
 
 
 
@@ -164,5 +103,82 @@ prevBtn.addEventListener("click", () => {
 
 
 
-// // Image carousel
+
+// Image Gallery Carousel (GALLERY PAGE)
+
+// Create images inside the left gallery wrapper
+const leftImageWrapper = document.querySelector("#left-image");
+
+for (let i = 1; i < 5; i++) {
+    const imageTag = document.createElement("img");
+
+    imageTag.classList.add("new-image");
+
+    imageTag.src = `assets/images/1%20(${i}).webp`
+
+    leftImageWrapper.appendChild(imageTag);
+}
+
+
+// Create images inside the right gallery wrapper
+const rightImageWrapper = document.querySelector("#right-image");
+
+for (let i = 6; i < 10; i++) {
+    const imageTag = document.createElement("img");
+
+    imageTag.classList.add("new-image-right");
+
+    imageTag.src = `assets/images/1%20(${i}).webp`
+
+    rightImageWrapper.appendChild(imageTag);
+}
+
+
+nextBtn.addEventListener("click", () => {
+    let lastChild = document.querySelector(".new-image:last-child");
+    let secondToLastChild = document.querySelector(".new-image:nth-last-child(2)");
+
+    let rightlastChild = document.querySelector(".new-image-right:last-child");
+    let rightsecondToLastChild = document.querySelector(".new-image-right:nth-last-child(2)");
+
+    
+    lastChild.style.animation = "slide-left 0.4s ease-in forwards";
+    secondToLastChild.style.animation = "scale-up 0.4s ease-in forwards";
+
+    rightlastChild.style.animation = "slide-left 0.4s ease-in forwards";
+    rightsecondToLastChild.style.animation = "scale-up 0.4s ease-in forwards";
+
+    setTimeout(() => {
+        lastChild.style.animation = "";
+        secondToLastChild.style.animation = "";
+
+        rightlastChild.style.animation = "";
+        rightsecondToLastChild.style.animation = "";
+
+        leftImageWrapper.prepend(lastChild);
+        rightImageWrapper.prepend(rightlastChild);
+    }, 400);
+});
+
+
+prevBtn.addEventListener("click", () => {
+    let lastChild = document.querySelector(".new-image:first-child");
+    let rightlastChild = document.querySelector(".new-image-right:first-child");
+
+    gsap.timeline()
+    .set([lastChild, rightlastChild], {
+        x: -500,
+        clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
+        onComplete: () => {
+            leftImageWrapper.append(lastChild);
+            rightImageWrapper.append(rightlastChild);
+        }
+    })
+    .to([lastChild, rightlastChild], {
+        x: 0,
+        duration: 0.6,
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+    })
+});
+
 
