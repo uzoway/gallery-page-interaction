@@ -1,14 +1,3 @@
-// Register CustomEase plugin
-// gsap.registerPlugin(CustomEase);
-
-
-// //Custom Eases 
-// CustomEase.create("ease-out-quart", "0.165,0.84,0.44,1");
-// CustomEase.create("custom", ".85, 0, .15, 1");
-
-
-
-
 function lerp(start, end, t) {
     return start * (1 - t) + end * t;
 }
