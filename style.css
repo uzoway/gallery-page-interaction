@@ -128,7 +128,6 @@ body {
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    will-change: transform;
 }
 
 .wrapper .images .image__container {
