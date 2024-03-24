@@ -118,23 +118,19 @@ body {
     padding-bottom: 2.5rem;
 }
 
-
-
-
-
-
 .wrapper .images {
     padding-top: 0.5rem;
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    will-change: transform;
 }
 
 .wrapper .images .image__container {
     transition: all .3s ease-out;
     transform-origin: 50% 0;
     position: relative;
-    will-change: padding;
+    will-change: transform;
 }
 
 .wrapper .images .image__container:hover {
@@ -169,7 +165,6 @@ body {
     font-weight: 600;
     font-family: var(--noto-sans);
 }
-
 
 .gallery__wrapper {
     width: 100%;
