@@ -44,6 +44,17 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    position: relative;
+}
+
+.transition__overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black);
+    z-index: 2;
 }
 
 .wrapper {
@@ -218,6 +229,11 @@ body {
     height: calc(100vh - 1rem);
     overflow: hidden;
     position: relative;
+    background-color: rgb(245, 243, 243);
+
+    /* variables for gsap animation */
+    --white-translate-y-percent: 0%;
+    --gray-translate-y-percent: 0%;   
 }
 
 .gallery__container .right__container .image__wrapper {
@@ -225,6 +241,12 @@ body {
     height: 40vh;
     overflow: hidden;
     position: relative;
+    background-color: rgb(245, 243, 243);
+
+    /* variables for gsap animation */
+    --white-translate-y-percent: 0%;
+    --gray-translate-y-percent: 0%;
+
 }
 
 .gallery__container .left__container .image__wrapper img,
@@ -232,13 +254,33 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-}
-
-.gallery__container .left__container .image__wrapper img,
-.gallery__container .right__container .image__wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.gallery__container .left__container .image__wrapper::before,
+.gallery__container .right__container .image__wrapper::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 3;
+    transform: translateY(var(--white-translate-y-percent));
+}
+
+.gallery__container .left__container .image__wrapper::after,
+.gallery__container .right__container .image__wrapper::after {
+    position: absolute;
+    content: "";
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(241, 241, 241);
+    z-index: 2;
+    transform: translateY(var(--gray-translate-y-percent));
 }
 
 @keyframes slide-left {
