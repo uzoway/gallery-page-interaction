@@ -8,10 +8,11 @@
 
     <title>Gallery Interaction Concept</title>
 </head>
-<body>
+<body data-barba="wrapper">
     
+    <div class="transition__overlay"></div>
    
-    <main class="wrapper">
+    <main class="wrapper" data-barba="container" data-barba-namespace="home-page">
         <div class="images">
             <div class="image__container">
                 <a href="#" class="image__container--image">
@@ -202,10 +203,10 @@
         </div>
     </main>
 
-
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
     <script src="./script.js"></script>
 </body>
 </html>
