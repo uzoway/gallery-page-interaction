@@ -1,6 +1,6 @@
-# Masked Loader Animation using GSAP
+# Gallery Page Interaction using CSS/JavaScript Animation
 
-This repo is for the development of a masked loader animation as a concept designed by [Torfs Bob](https://www.instagram.com/torfsbob/) [here](https://www.instagram.com/p/C2sDEdAtad8/?img_index=1). 
+This repo is for the development of a Gallery Page interaction(Horizontal scroll & custom gallery interaction) designed by [Rron Berisha](https://rronberisha.com/#/) [here](https://www.instagram.com/p/C0FOl6bLezi/?img_index=1). 
 
 ## Table of contents
 
@@ -19,34 +19,12 @@ This repo is for the development of a masked loader animation as a concept desig
 
 - HTML5
 - CSS3
-- JS/GSAP
+- JavaScript
+- Barba.js
 
 ### Approach
 
-Attached below is the complete GSAP timeline code I used to create the animation:
-
-```js
-function runLoaderAnimation() {
-    const preloaderTl = gsap.timeline({
-        defaults: { ease: "ease-out-quart", duration: 1.5, delay: .5 }
-    });
-
-    preloaderTl
-        .to("#js-loader-image", { y: 0, autoAlpha: 1, duration: .8 })
-        .to("#js-loader-text", { y: 0, duration: .8 }, 0)
-        .to("#js-wrapper-loader", { autoAlpha: 0, delay: .5, duration: 0.4, ease: "custom" })
-        .to("#js-wrapper", { scale: 1, duration: 0.85, ease: "custom" }, ">-0.8")
-        .from("#home-paragraph", { y: "165", skewY: 5, stagger: .15, duration: .9, }, ">-0.9")
-        .from("#paragraph-image", { autoAlpha: 0, duration: 0.1, ease: "custom" }, "<-0.9")
-        .from("#paragraph-image", { clipPath: "polygon(0 100%, 100% 86%, 100% 100%, 0 100%)", duration: 1, }, "<")
-        .from("#inner-text", { autoAlpha: 0, duration: 0.8 }, "<-1")
-        .from("#header", { autoAlpha: 0, duration: 0.6, ease: "custom" }, "<-0.23")
-           
-}
-
-
-window.addEventListener("DOMContentLoaded", runLoaderAnimation);
-```
+Feel free to review the code for a more detailed understanding of my approach, as I have simplified it as much as possible.
 
 ## Author
 
@@ -55,4 +33,4 @@ window.addEventListener("DOMContentLoaded", runLoaderAnimation);
 
 ## Credit 
 
-Huge credits goes to [Torfs Bob](https://www.instagram.com/torfsbob/)🙌 who created the original design and motion which I have coded.
+Huge credits goes to [Rron Berisha](https://rronberisha.com/#/)🙌 who created the original design and motion which I have coded.
