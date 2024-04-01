@@ -124,7 +124,7 @@ body {
     text-transform: uppercase;
     color: var(--black);
     font-family: var(--quay);
-    font-size: calc(26.25vw + 1rem);
+    font-size: calc(25.85vw + 1rem);
     line-height: .77;
     padding-bottom: 2.5rem;
 }
